@@ -29,6 +29,12 @@ public class 剧情对话 : MonoBehaviour
     public Button 选项;
     //选项的父节点 用于排序
     public Transform 选项组;
+    public Transform 剧情;
+    public Button 消息;
+
+    public Transform 摇杆;
+    public Transform 跳跃;
+
     private void Awake()
     {
         imageDic["你"] = images[0];
@@ -36,12 +42,14 @@ public class 剧情对话 : MonoBehaviour
     }
     void Start()
     {
+        摇杆.gameObject.SetActive(false);
+        跳跃.gameObject.SetActive(false);
+
         ReadText(chatfile);
     }
 
     void Update()
     {
-
         //UpdateText("智叟", "你好");
         //UpdateImage("智叟", "左");
     }
@@ -84,32 +92,34 @@ public class 剧情对话 : MonoBehaviour
         for(int i = 0;i <chatrows.Length; i++)
         {
             string[] cells = chatrows[i].Split(',');
-            if (cells.Length >= 6 && cells[0] == "#" && int.TryParse(cells[1], out int index))
+            if (cells[0] == "#" && int.Parse(cells[1]) == 对话索引)
             {
+                继续键.gameObject.SetActive(true);
                 选项.gameObject.SetActive(false);
-                if (index == 对话索引)
-                {
-                    UpdateText(cells[2], cells[4]);
-                    UpdateImage(cells[2], cells[3]);
+                UpdateText(cells[2], cells[4]);
+                UpdateImage(cells[2], cells[3]);
 
-                    if (int.TryParse(cells[5], out int nextIndex))
-                    {
-                        对话索引 = nextIndex;
-                    }
-                    else
-                    {
-                        Debug.LogError("无法解析下一个对话索引：" + cells[5]);
-                    }
-                    继续键.gameObject.SetActive(true);
-                    break;
-                }
+                对话索引 = int.Parse(cells[5]);
+                break;
             }
-            else if (cells.Length >= 6 && int.TryParse(cells[1], out int 对话索引) && cells[0] == "$")
+            
+            else if (cells[0] == "$" && int.Parse(cells[1]) == 对话索引)
             {
                 Debug.Log("读取选项");
                 选项.gameObject.SetActive(true);
                 继续键.gameObject.SetActive(false);
                 生成选项(i);
+                选项.gameObject.SetActive(false);
+            }
+
+            else if (cells[0] == "END" && int.Parse(cells[1]) == 对话索引)
+            {
+                Debug.Log("剧情结束");
+                剧情.gameObject.SetActive(false);
+                消息.gameObject.SetActive(true);
+                摇杆.gameObject.SetActive(true);
+                跳跃.gameObject.SetActive(true);
+
             }
         }
     }
@@ -126,15 +136,17 @@ public class 剧情对话 : MonoBehaviour
         if(cells[0] == "$")
         {
             UnityEngine.UI.Button button = Instantiate(选项, 选项组);
+
             // 绑定按钮事件
             button.GetComponentInChildren<Text>().text = cells[4];
             button.GetComponent<Button>().onClick.AddListener
             (
                 delegate
                 {
-                    点击选项(int.Parse(cells[5]));   
+                    点击选项(int.Parse(cells[5]));
                 }
-            );
+            );            
+             
             生成选项(_index + 1);
         }
     }
@@ -146,8 +158,7 @@ public class 剧情对话 : MonoBehaviour
         显示对话();
         for(int i = 0;i < 选项组.childCount; i++)
         {
-            //Destory(选项组.GetChild(i).gameObject);
-            选项.gameObject.SetActive(false);
+            Destroy(选项组.GetChild(i).gameObject);
         }
     }
 }
