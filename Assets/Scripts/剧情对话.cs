@@ -132,11 +132,10 @@ public class 剧情对话 : MonoBehaviour
             (
                 delegate
                 {
-                    点击选项(int.Parse(cells[5]));
-                    // 点击选项后递增索引
-                    生成选项(_index + 1);
+                    点击选项(int.Parse(cells[5]));   
                 }
             );
+            生成选项(_index + 1);
         }
     }
 
