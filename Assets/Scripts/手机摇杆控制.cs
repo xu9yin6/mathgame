@@ -12,7 +12,6 @@ public class 手机摇杆控制 : MonoBehaviour
     public static Vector3 方向操作;
     public Animator anim;
     public float 移动速度 = 0.06f;
-
     public void 隐藏或显示摇杆(bool 显示)
     {
         foreach (GameObject fFor in 摇杆及圆盘)
