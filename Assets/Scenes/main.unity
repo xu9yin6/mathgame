@@ -25040,7 +25040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6099465282209164806, guid: 687039bd5cf4f1344957f51b0493e71d, type: 3}
       propertyPath: m_Text
-      value: "\u662F"
+      value: "\u4F60\u597D"
       objectReference: {fileID: 0}
     - target: {fileID: 6099465282209164806, guid: 687039bd5cf4f1344957f51b0493e71d, type: 3}
       propertyPath: m_Color.b
