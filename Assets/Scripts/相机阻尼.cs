@@ -14,6 +14,9 @@ public class 相机阻尼 : MonoBehaviour
     public Camera mainCamera;
     [SerializeField] private Transform suanPan;
     
+    public float leftBoundary = -5.0f; // 左边界世界坐标值
+    public float rightBoundary = 5.0f; // 右边界世界坐标值
+
     private void FixedUpdate()
     {
         suanPan.position = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width * 0.27f, Screen.height * 0.5f, 10f));
@@ -24,7 +27,8 @@ public class 相机阻尼 : MonoBehaviour
         }
         if(isFollow)
         {
-            transform.position = new Vector3(Mathf.SmoothDamp(transform.position.x, 玩家.position.x, ref xSpeed, smoothTime), transform.position.y, transform.position.z);
+            float targetX = Mathf.Clamp(玩家.position.x, leftBoundary, rightBoundary); // 限制相机在边界范围内移动
+            transform.position = new Vector3(Mathf.SmoothDamp(transform.position.x, targetX, ref xSpeed, smoothTime), transform.position.y, transform.position.z);
             if(Mathf.Abs(transform.position.x - 玩家.position.x) < 0.05f)
             {
                 isFollow = false;
@@ -34,8 +38,7 @@ public class 相机阻尼 : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Debug.DrawLine(new Vector3(followSpace + transform.position.x, 5, 0),new Vector3(followSpace +transform.position.x, -5, 0));
-        Debug.DrawLine(new Vector3(-followSpace + transform.position.x, 5, 0),new Vector3(-followSpace +transform.position.x, -5, 0));
-
+        Debug.DrawLine(new Vector3(rightBoundary, 5, 0), new Vector3(rightBoundary, -5, 0)); // 绘制右边界线
+        Debug.DrawLine(new Vector3(leftBoundary, 5, 0), new Vector3(leftBoundary, -5, 0)); // 绘制左边界线
     }
 }

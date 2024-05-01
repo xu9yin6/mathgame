@@ -41,6 +41,8 @@ TagManager:
   - 4_5
   - 4_1
   - 3_3
+  - Coin
+  - tiaozhuan
   layers:
   - Default
   - TransparentFX
