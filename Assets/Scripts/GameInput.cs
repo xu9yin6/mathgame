@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class GameInput : MonoBehaviour
 {
+    public AudioClip upMusic;
+    public AudioClip downMusic;
 
     private void SuanzhuMove1(GameObject moveGameObject, suanzhu zhuzi)
     {
+       
         // 珠子尚未移动，执行移动操作
         zhuzi.MoveDistance = 2;
         Vector3 newPosition = new Vector3(moveGameObject.transform.position.x, moveGameObject.transform.position.y + zhuzi.MoveDistance, moveGameObject.transform.position.z);
@@ -16,6 +20,7 @@ public class GameInput : MonoBehaviour
     }
     private void SuanzhuMove2(GameObject moveGameObject, suanzhu zhuzi)
     {
+
         zhuzi.MoveDistance = 2;
         Vector3 newPosition = new Vector3(moveGameObject.transform.position.x, moveGameObject.transform.position.y - zhuzi.MoveDistance, moveGameObject.transform.position.z);
         moveGameObject.transform.position = newPosition;
@@ -23,6 +28,7 @@ public class GameInput : MonoBehaviour
     }
     private void SuanzhuMove3(GameObject moveGameObject, suanzhu zhuzi)
     {
+
         zhuzi.MoveDistance = 0.8f;
         Vector3 newPosition = new Vector3(moveGameObject.transform.position.x, moveGameObject.transform.position.y - zhuzi.MoveDistance, moveGameObject.transform.position.z);
         moveGameObject.transform.position = newPosition;
@@ -30,6 +36,7 @@ public class GameInput : MonoBehaviour
     }
     private void SuanzhuMove4(GameObject moveGameObject, suanzhu zhuzi)
     {
+
         zhuzi.MoveDistance = 0.8f;
         Vector3 newPosition = new Vector3(moveGameObject.transform.position.x, moveGameObject.transform.position.y + zhuzi.MoveDistance, moveGameObject.transform.position.z);
         moveGameObject.transform.position = newPosition;
@@ -38,7 +45,12 @@ public class GameInput : MonoBehaviour
 
     private void Update()
     {
-        
+
+        Move();
+    }
+
+    private void Move()
+    {
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -57,23 +69,26 @@ public class GameInput : MonoBehaviour
                         {
                             if (!suanzhuComponent.HasMoved && hit.collider.gameObject.layer == LayerMask.NameToLayer("down"))
                             {
+                                AudioManager.instance.AudioPlay(upMusic);
                                 int index = suanzhuComponent.gameObjects.IndexOf(hit.collider.gameObject);
-                                if(index != 0)
+                                if (index != 0)
                                 {
-                                    for(int i = 0; i < index; i++)
+                                    for (int i = 0; i < index; i++)
                                     {
                                         GameObject obj = suanzhuComponent.gameObjects[i];
                                         suanzhu zhuzi = obj.GetComponent<suanzhu>();
                                         if (!zhuzi.HasMoved)
                                         {
-                                            SuanzhuMove1(obj,zhuzi);
+                                            SuanzhuMove1(obj, zhuzi);
                                         }
                                     }
                                 }
-                                    SuanzhuMove1(hit.collider.gameObject, suanzhuComponent);
+                                SuanzhuMove1(hit.collider.gameObject, suanzhuComponent);
                             }
                             else if (suanzhuComponent.HasMoved && hit.collider.gameObject.layer == LayerMask.NameToLayer("down"))
                             {
+                                AudioManager.instance.AudioPlay(downMusic);
+
                                 int index = suanzhuComponent.gameObjects.IndexOf(hit.collider.gameObject);
                                 if (index != 3)
                                 {
@@ -91,6 +106,8 @@ public class GameInput : MonoBehaviour
                             }
                             else if (!suanzhuComponent.HasMoved && hit.collider.gameObject.layer == LayerMask.NameToLayer("up"))
                             {
+                                AudioManager.instance.AudioPlay(downMusic);
+
                                 int index = suanzhuComponent.gameObjects.IndexOf(hit.collider.gameObject);
                                 if (index != 1)
                                 {
@@ -108,6 +125,8 @@ public class GameInput : MonoBehaviour
                             }
                             else if (suanzhuComponent.HasMoved && hit.collider.gameObject.layer == LayerMask.NameToLayer("up"))
                             {
+                                AudioManager.instance.AudioPlay(upMusic);
+
                                 int index = suanzhuComponent.gameObjects.IndexOf(hit.collider.gameObject);
                                 if (index != 0)
                                 {
