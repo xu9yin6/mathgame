@@ -12,6 +12,7 @@ public enum StateType
 [Serializable]
 public class Parameter
 {
+    public GameObject selfEnemy;
     public int health;
     public float moveSpeed;
     public float chaseSpeed;
@@ -23,6 +24,8 @@ public class Parameter
     public Transform attackPoint;
     public float attackArea;
     public Animator animator;
+    public bool isAttacking;
+    public float distance;
 }
 public class FSM : MonoBehaviour
 {

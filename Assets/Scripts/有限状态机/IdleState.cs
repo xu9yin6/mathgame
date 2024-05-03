@@ -158,12 +158,14 @@ public class ReactState : IState
     }
 }
 
-public class AttackState : IState
+public class AttackState :  MonoBehaviour, IState
 {
     private FSM manager;
     private Parameter parameter;
 
     private AnimatorStateInfo info;
+
+
     public AttackState(FSM manager)
     {
         this.manager = manager;
@@ -171,16 +173,49 @@ public class AttackState : IState
     }
     public void OnEnter()
     {
-        Debug.Log("11");
+        AudioManager.instance.AudioChange(AudioManager.instance.zaoYu);
+        parameter.isAttacking = true;
+        Vector3 currentPosition = InputManager.instance.cma.transform.position;
+
+        // 计算新的目标位置，向左移动指定的距离
+        Vector3 targetPosition = currentPosition + Vector3.left * parameter.distance;
+
+        // 应用新的位置到相机
+        InputManager.instance.cma.transform.position = targetPosition;
     }
 
     public void OnUpdate()
     {
+        if(parameter.isAttacking)
+        {
+            InputManager.instance.ZhanDou();
+            
+            parameter.animator.Play("Idle");
+            if(AudioManager.instance.audioS.clip == AudioManager.instance.zaoYu  && !AudioManager.instance.audioS.isPlaying)
+            {
+                AudioManager.instance.AudioChange(AudioManager.instance.zhanDou);
+            }
+            if(AudioManager.instance.audioS.clip == AudioManager.instance.zhanDou && !AudioManager.instance.audioS.isPlaying)
+            {
+                manager.TransitionState(StateType.Chase);
+            }
+        }
+        else
+        {
+            info = parameter.animator.GetCurrentAnimatorStateInfo(0);
+
+            if (info.normalizedTime >= .95f)
+            {
+                manager.TransitionState(StateType.Chase);
+            }
+        }
 
     }
 
     public void OnExit()
     {
-
+        AudioManager.instance.AudioChange(AudioManager.instance.backGround);
+        InputManager.instance.PingChang();
+        Destroy(parameter.selfEnemy);
     }
 }

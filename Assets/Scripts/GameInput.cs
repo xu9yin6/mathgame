@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class GameInput : MonoBehaviour
 {
-    public AudioClip upMusic;
-    public AudioClip downMusic;
+    //public AudioClip upMusic;
+    //public AudioClip downMusic;
 
     private void SuanzhuMove1(GameObject moveGameObject, suanzhu zhuzi)
     {
@@ -69,7 +69,7 @@ public class GameInput : MonoBehaviour
                         {
                             if (!suanzhuComponent.HasMoved && hit.collider.gameObject.layer == LayerMask.NameToLayer("down"))
                             {
-                                AudioManager.instance.AudioPlay(upMusic);
+                                //AudioManager.instance.AudioPlay(upMusic);
                                 int index = suanzhuComponent.gameObjects.IndexOf(hit.collider.gameObject);
                                 if (index != 0)
                                 {
@@ -87,7 +87,7 @@ public class GameInput : MonoBehaviour
                             }
                             else if (suanzhuComponent.HasMoved && hit.collider.gameObject.layer == LayerMask.NameToLayer("down"))
                             {
-                                AudioManager.instance.AudioPlay(downMusic);
+                               // AudioManager.instance.AudioPlay(downMusic);
 
                                 int index = suanzhuComponent.gameObjects.IndexOf(hit.collider.gameObject);
                                 if (index != 3)
@@ -106,7 +106,7 @@ public class GameInput : MonoBehaviour
                             }
                             else if (!suanzhuComponent.HasMoved && hit.collider.gameObject.layer == LayerMask.NameToLayer("up"))
                             {
-                                AudioManager.instance.AudioPlay(downMusic);
+                                //AudioManager.instance.AudioPlay(downMusic);
 
                                 int index = suanzhuComponent.gameObjects.IndexOf(hit.collider.gameObject);
                                 if (index != 1)
@@ -125,7 +125,7 @@ public class GameInput : MonoBehaviour
                             }
                             else if (suanzhuComponent.HasMoved && hit.collider.gameObject.layer == LayerMask.NameToLayer("up"))
                             {
-                                AudioManager.instance.AudioPlay(upMusic);
+                                //AudioManager.instance.AudioPlay(upMusic);
 
                                 int index = suanzhuComponent.gameObjects.IndexOf(hit.collider.gameObject);
                                 if (index != 0)

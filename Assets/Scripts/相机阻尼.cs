@@ -12,14 +12,14 @@ public class 相机阻尼 : MonoBehaviour
     public float followSpace = 1.0f;
     public Transform 玩家;
     public Camera mainCamera;
-    [SerializeField] private Transform suanPan;
     
     public float leftBoundary = -5.0f; // 左边界世界坐标值
     public float rightBoundary = 5.0f; // 右边界世界坐标值
 
+
     private void FixedUpdate()
     {
-        suanPan.position = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width * 0.27f, Screen.height * 0.5f, 10f));
+        
         distance = Mathf.Abs(玩家.position.x - transform.position.x);
         if(distance > followSpace)
         {
