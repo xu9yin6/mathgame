@@ -20,8 +20,10 @@ public class 死亡区域 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if(collision.CompareTag("diearea"))
         {
+            Debug.Log("有碰撞");
             player.transform.position = startpos;
         }
     }

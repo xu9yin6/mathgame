@@ -8407,6 +8407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e821417340dcca14797f1c702f34ca5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upMusic: {fileID: 0}
+  downMusic: {fileID: 0}
 --- !u!4 &717742220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4717236769521998006, guid: ce3de6f4b88e06e4a92dc2700fdeb76c, type: 3}
@@ -8845,7 +8847,7 @@ MonoBehaviour:
   "\u73A9\u5BB6": {fileID: 1709503837}
   mainCamera: {fileID: 792008264}
   suanPan: {fileID: 717742220}
-  leftBoundary: 0
+  leftBoundary: 1
   rightBoundary: 35
 --- !u!81 &792008266
 AudioListener:
@@ -8864,7 +8866,7 @@ Transform:
   m_GameObject: {fileID: 792008263}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 1, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10035,7 +10037,7 @@ Transform:
   m_GameObject: {fileID: 1306422284}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.34, y: -8.47, z: 0}
+  m_LocalPosition: {x: 40.24, y: -10.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10331,7 +10333,7 @@ Transform:
   m_GameObject: {fileID: 1369294390}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.2, y: -7.2, z: 0.07205122}
+  m_LocalPosition: {x: 23.55, y: -9.67, z: 0.07205122}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

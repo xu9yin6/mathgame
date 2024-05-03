@@ -12578,6 +12578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e821417340dcca14797f1c702f34ca5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upMusic: {fileID: 0}
+  downMusic: {fileID: 0}
 --- !u!1 &1847209668
 GameObject:
   m_ObjectHideFlags: 0
@@ -12795,7 +12797,7 @@ MonoBehaviour:
   "\u73A9\u5BB6": {fileID: 207167289}
   mainCamera: {fileID: 1885312723}
   suanPan: {fileID: 1829738261}
-  leftBoundary: 0
+  leftBoundary: 1
   rightBoundary: 35
 --- !u!81 &1885312725
 AudioListener:
@@ -12814,7 +12816,7 @@ Transform:
   m_GameObject: {fileID: 1885312722}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 1, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

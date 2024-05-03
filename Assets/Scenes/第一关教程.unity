@@ -25219,7 +25219,7 @@ MonoBehaviour:
   "\u73A9\u5BB6": {fileID: 425514526}
   mainCamera: {fileID: 931904851}
   suanPan: {fileID: 1609803813}
-  leftBoundary: 0.29
+  leftBoundary: 1
   rightBoundary: 50
 --- !u!81 &931904853
 AudioListener:
@@ -25238,7 +25238,7 @@ Transform:
   m_GameObject: {fileID: 931904850}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.38, y: 0, z: -10}
+  m_LocalPosition: {x: 1, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
