@@ -12,6 +12,8 @@ public class 触发剧情 : MonoBehaviour
     public Transform 剧情;
     public Transform chatManager;
 
+    public Transform 摇杆;
+    public Transform 跳跃;
 
     private bool 触发器 = false;
 
@@ -29,6 +31,8 @@ public class 触发剧情 : MonoBehaviour
             消息.gameObject.SetActive(true);
             触发器 = true;
             //触发按钮();
+            摇杆.gameObject.SetActive(false);
+            跳跃.gameObject.SetActive(false);
         }
     }
 

@@ -44,6 +44,7 @@ TagManager:
   - Coin
   - tiaozhuan
   - diearea
+  - shiban
   layers:
   - Default
   - TransparentFX

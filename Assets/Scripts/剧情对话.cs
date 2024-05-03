@@ -42,8 +42,8 @@ public class 剧情对话 : MonoBehaviour
     }
     void Start()
     {
-        摇杆.gameObject.SetActive(false);
-        跳跃.gameObject.SetActive(false);
+        摇杆.gameObject.SetActive(true);
+        跳跃.gameObject.SetActive(true);
 
         ReadText(chatfile);
     }
