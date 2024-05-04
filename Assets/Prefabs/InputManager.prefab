@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4869406738832684301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 361496273812580168}
+  - component: {fileID: 4875210359363540760}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &361496273812580168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4869406738832684301}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4875210359363540760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4869406738832684301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08546e0404f9e284b947a216b702560a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yaoGan: {fileID: 0}
+  tiaoYue: {fileID: 0}
+  suanPan: {fileID: 0}
+  phone: {fileID: 0}
+  cameraM: {fileID: 0}
+  cma: {fileID: 0}
+  suanPant: {fileID: 0}
+  comBo: {fileID: 0}
+  playerP: {fileID: 0}
+  enemyP: {fileID: 0}
+  jiaoCheng: {fileID: 0}
+  jiFen: {fileID: 0}
+  comBoJ: {fileID: 0}
+  zhiShi: {fileID: 0}
+  silder: {fileID: 0}
+  hp: {fileID: 0}
+  playerHP: {fileID: 0}
+  timestamps:
+  - 5.354649
+  - 5.887982
+  - 6.421315
+  - 6.997324
+  - 9.74932
+  - 10.23998
+  - 10.81599
+  - 11.32798
+  - 14.14399
+  - 14.33599
+  - 14.69866
+  - 15.232
+  - 15.76533
+  enemyTimestamps:
+  - 2.922653
+  - 3.519977
+  - 4.074648
+  - 4.586644
+  - 7.295986
+  - 7.871995
+  - 8.426644
+  - 9.023991
+  - 11.66932
+  - 11.96798
+  - 12.24533
+  - 13.01331
+  - 13.39732
+  enemyjianHP:
+  - 6.997324
+  - 11.32798
+  - 15.76533

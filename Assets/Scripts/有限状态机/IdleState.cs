@@ -165,6 +165,7 @@ public class AttackState :  MonoBehaviour, IState
     private FSM manager;
     private Parameter parameter;
 
+    private bool isAnim = false;
     private AnimatorStateInfo info;
     private int score = 0;
     private HashSet<float> matchedTimes = new HashSet<float>();
@@ -192,12 +193,17 @@ public class AttackState :  MonoBehaviour, IState
 
     public void OnUpdate()
     {
-        if(parameter.isAttacking)
+        info = parameter.animator.GetCurrentAnimatorStateInfo(0);
+        if (parameter.isAttacking)
         {
             InputManager.instance.ZhanDou();
-
-
-            parameter.animator.Play("Idle");
+            
+            if (!isAnim)
+            {
+                parameter.animator.Play("Idle");
+               
+            }
+            
             if(AudioManager.instance.audioS.clip == AudioManager.instance.zaoYu  && !AudioManager.instance.audioS.isPlaying)
             {
                 AudioManager.instance.AudioChange(AudioManager.instance.zhanDou);
@@ -221,7 +227,12 @@ public class AttackState :  MonoBehaviour, IState
                 {
                     if (Mathf.Approximately(AudioManager.instance.audioS.time, matchTime) && !matchedTimes.Contains(matchTime))
                     {
-                        Debug.Log("输出2"); // 当匹配时输出1
+                        //isAnim = true;
+                        //parameter.animator.Play("Attack");
+                        //if (info.normalizedTime >= .95f)
+                        //{
+                        //    isAnim = false;
+                        //}
                         matchedTimes.Add(matchTime);
                     }
                 }
@@ -237,7 +248,6 @@ public class AttackState :  MonoBehaviour, IState
         }
         else
         {
-            info = parameter.animator.GetCurrentAnimatorStateInfo(0);
 
             if (info.normalizedTime >= .95f)
             {

@@ -120,7 +120,6 @@ Transform:
   - {fileID: 2005272350345192104}
   - {fileID: 6815022772367082581}
   - {fileID: 1374175763722633750}
-  - {fileID: 1663919984713785362}
   m_Father: {fileID: 8272930467927999036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &533722777998779513
@@ -1127,6 +1126,7 @@ Transform:
   - {fileID: 7052701431627847146}
   - {fileID: 7236669518441387478}
   - {fileID: 2815947059260194887}
+  - {fileID: 1663919984713785362}
   m_Father: {fileID: 6327224905359059241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4066957345852430091
@@ -1163,7 +1163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parameter:
-    selfEnemy: {fileID: 0}
+    selfEnemy: {fileID: 7173313287068244139}
     health: 3
     moveSpeed: 2
     chaseSpeed: 3
@@ -1419,11 +1419,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4443508352646218088}
-  m_Father: {fileID: 6348895512529068077}
+  m_Father: {fileID: 8272930467927999036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.016998291, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &293922029169988607

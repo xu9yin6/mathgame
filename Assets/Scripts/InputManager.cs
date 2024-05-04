@@ -47,8 +47,12 @@ public class InputManager : MonoBehaviour
         tiaoYue.SetActive(true);
         phone.enabled = true;
         cameraM.enabled = true;
-        jiaoCheng.SetActive(true);
-        jiFen.SetActive(true);
+        if (jiaoCheng != null)
+        {
+            jiaoCheng.SetActive(true);
+            jiFen.SetActive(true);
+        }
+
         suanPan.SetActive(false);
         comBo.SetActive(false);
         zhiShi.SetActive(false);
@@ -63,8 +67,12 @@ public void ZhanDou()
         tiaoYue.SetActive(false);
         phone.enabled = false;
         cameraM.enabled = false;
-        jiaoCheng.SetActive(false);
-        jiFen.SetActive(false);
+        if (jiaoCheng != null)
+        {
+            jiaoCheng.SetActive(false);
+            jiFen.SetActive(false);
+        }
+
         suanPan.SetActive(true);
         comBo.SetActive(true);
         zhiShi.SetActive(true);
