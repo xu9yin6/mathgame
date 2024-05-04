@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class IdleState : IState
 {
@@ -167,7 +168,8 @@ public class AttackState :  MonoBehaviour, IState
     private AnimatorStateInfo info;
     private int score = 0;
     private HashSet<float> matchedTimes = new HashSet<float>();
-
+    private HashSet<float> newmatchedTimes = new HashSet<float>();
+    private float hp;
 
     public AttackState(FSM manager)
     {
@@ -185,7 +187,7 @@ public class AttackState :  MonoBehaviour, IState
         // 应用新的位置到相机
         InputManager.instance.cma.transform.position = targetPosition;
         InputManager.instance.enemyP.transform.position += Vector3.right * 0.5f;
-
+        hp = parameter.health;
     }
 
     public void OnUpdate()
@@ -221,6 +223,14 @@ public class AttackState :  MonoBehaviour, IState
                     {
                         Debug.Log("输出2"); // 当匹配时输出1
                         matchedTimes.Add(matchTime);
+                    }
+                }
+                foreach (float matchTime in InputManager.instance.enemyjianHP)
+                {
+                    if (Mathf.Approximately(AudioManager.instance.audioS.time, matchTime) && !newmatchedTimes.Contains(matchTime))
+                    {
+                        InputManager.instance.silder.value -= 0.33f;
+                        newmatchedTimes.Add(matchTime);
                     }
                 }
             }

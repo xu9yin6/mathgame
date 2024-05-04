@@ -19,8 +19,14 @@ public class InputManager : MonoBehaviour
     public GameObject jiaoCheng;
     public GameObject jiFen;
     public Text comBoJ;
+    public GameObject zhiShi;
+    public Slider silder;
+    public GameObject hp;
+    public GameObject playerHP;
     public List<float> timestamps = new List<float>();
     public List<float> enemyTimestamps = new List<float>();
+    public List<float> enemyjianHP = new List<float>();
+
     private void Awake()
     {
         // 确保只有一个实例存在
@@ -45,7 +51,9 @@ public class InputManager : MonoBehaviour
         jiFen.SetActive(true);
         suanPan.SetActive(false);
         comBo.SetActive(false);
-
+        zhiShi.SetActive(false);
+        hp.SetActive(false);
+        playerHP.SetActive(false);
 }
 
 public void ZhanDou()
@@ -59,6 +67,8 @@ public void ZhanDou()
         jiFen.SetActive(false);
         suanPan.SetActive(true);
         comBo.SetActive(true);
-
+        zhiShi.SetActive(true);
+        hp.SetActive(true);
+        playerHP.SetActive(true);
     }
 }

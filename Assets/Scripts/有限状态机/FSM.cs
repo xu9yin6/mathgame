@@ -13,7 +13,7 @@ public enum StateType
 public class Parameter
 {
     public GameObject selfEnemy;
-    public int health;
+    public float health;
     public float moveSpeed;
     public float chaseSpeed;
     public float idleTime;
