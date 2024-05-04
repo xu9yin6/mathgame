@@ -10,9 +10,16 @@ public class 点击跳跃 : MonoBehaviour
 
     public float liftForce = 300;
 
+    public Button jumpButton; 
+
     void Start()
     {
         rg = GetComponent<Rigidbody2D>();
+        RectTransform rectTransform = jumpButton.GetComponent<RectTransform>();
+        rectTransform.anchorMin = new Vector2(1, 0);
+        rectTransform.anchorMax = new Vector2(1, 0);
+        rectTransform.pivot = new Vector2(1, 0);
+        rectTransform.anchoredPosition = new Vector2(-10, 10); 
     }
 
     public void OnJumpButtonClick()

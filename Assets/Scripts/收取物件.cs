@@ -11,6 +11,7 @@ public class 收取物件 : MonoBehaviour
     public Button collectButton;
     public Button declineButton;
     public Text 已寻回;
+    public GameObject 物件;
 
     private bool isInteracting = false;
 
@@ -21,7 +22,7 @@ public class 收取物件 : MonoBehaviour
             isInteracting = true;
             图像.SetActive(true);
             背景.SetActive(true);
-
+            物件.SetActive(true);
             名称.gameObject.SetActive(true);
             collectButton.gameObject.SetActive(true);
             declineButton.gameObject.SetActive(true);
@@ -39,6 +40,8 @@ public class 收取物件 : MonoBehaviour
         已寻回.gameObject.SetActive(true);
         图像.SetActive(false);
         背景.SetActive(false);
+        物件.SetActive(false);
+
 
         名称.gameObject.SetActive(false);
         collectButton.gameObject.SetActive(false);
