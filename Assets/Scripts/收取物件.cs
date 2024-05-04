@@ -43,6 +43,7 @@ public class 收取物件 : MonoBehaviour
         名称.gameObject.SetActive(false);
         collectButton.gameObject.SetActive(false);
         declineButton.gameObject.SetActive(false);
+        Destroy(transform.gameObject);
 
         // 移除事件监听器，避免重复调用
         collectButton.onClick.RemoveListener(OnCollectButtonClicked);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
@@ -12,7 +13,14 @@ public class InputManager : MonoBehaviour
     public 相机阻尼 cameraM;
     public Camera cma;
     public Transform suanPant;
+    public GameObject comBo;
+    public Transform playerP;
+    public Transform enemyP;
+    public GameObject jiaoCheng;
+    public GameObject jiFen;
+    public Text comBoJ;
     public List<float> timestamps = new List<float>();
+    public List<float> enemyTimestamps = new List<float>();
     private void Awake()
     {
         // 确保只有一个实例存在
@@ -33,16 +41,24 @@ public class InputManager : MonoBehaviour
         tiaoYue.SetActive(true);
         phone.enabled = true;
         cameraM.enabled = true;
+        jiaoCheng.SetActive(true);
+        jiFen.SetActive(true);
         suanPan.SetActive(false);
-    }
+        comBo.SetActive(false);
 
-    public void ZhanDou()
+}
+
+public void ZhanDou()
     {
         suanPant.position = cma.ScreenToWorldPoint(new Vector3(Screen.width * 0.27f, Screen.height * 0.5f, 10f));
         yaoGan.SetActive(false);
         tiaoYue.SetActive(false);
         phone.enabled = false;
         cameraM.enabled = false;
+        jiaoCheng.SetActive(false);
+        jiFen.SetActive(false);
         suanPan.SetActive(true);
+        comBo.SetActive(true);
+
     }
 }
