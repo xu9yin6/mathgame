@@ -51,13 +51,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - down
+  - up
   - Water
   - UI
-  - up
+  - down
   - Enemy
   - Player
-  - 
+  - suanpan
   - 
   - 
   - 
