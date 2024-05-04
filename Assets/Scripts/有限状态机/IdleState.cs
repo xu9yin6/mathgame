@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class IdleState : IState
 {
@@ -164,6 +165,8 @@ public class AttackState :  MonoBehaviour, IState
     private Parameter parameter;
 
     private AnimatorStateInfo info;
+    private int score = 0;
+    private HashSet<float> matchedTimes = new HashSet<float>();
 
 
     public AttackState(FSM manager)
@@ -179,9 +182,10 @@ public class AttackState :  MonoBehaviour, IState
 
         // 计算新的目标位置，向左移动指定的距离
         Vector3 targetPosition = currentPosition + Vector3.left * parameter.distance;
-
         // 应用新的位置到相机
         InputManager.instance.cma.transform.position = targetPosition;
+        InputManager.instance.enemyP.transform.position += Vector3.right * 0.5f;
+
     }
 
     public void OnUpdate()
@@ -189,7 +193,8 @@ public class AttackState :  MonoBehaviour, IState
         if(parameter.isAttacking)
         {
             InputManager.instance.ZhanDou();
-            
+
+
             parameter.animator.Play("Idle");
             if(AudioManager.instance.audioS.clip == AudioManager.instance.zaoYu  && !AudioManager.instance.audioS.isPlaying)
             {
@@ -198,6 +203,26 @@ public class AttackState :  MonoBehaviour, IState
             if(AudioManager.instance.audioS.clip == AudioManager.instance.zhanDou && !AudioManager.instance.audioS.isPlaying)
             {
                 manager.TransitionState(StateType.Chase);
+            }
+            if(AudioManager.instance.audioS.clip == AudioManager.instance.zhanDou && AudioManager.instance.audioS.isPlaying)
+            {
+                foreach (float matchTime in InputManager.instance.timestamps)
+                {
+                    if (Mathf.Approximately(AudioManager.instance.audioS.time, matchTime) && !matchedTimes.Contains(matchTime))
+                    {
+                        score++;
+                        InputManager.instance.comBoJ.text = score.ToString() + " X Combo";
+                        matchedTimes.Add(matchTime);
+                    }
+                }
+                foreach (float matchTime in InputManager.instance.enemyTimestamps)
+                {
+                    if (Mathf.Approximately(AudioManager.instance.audioS.time, matchTime) && !matchedTimes.Contains(matchTime))
+                    {
+                        Debug.Log("输出2"); // 当匹配时输出1
+                        matchedTimes.Add(matchTime);
+                    }
+                }
             }
         }
         else
